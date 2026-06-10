@@ -32,6 +32,11 @@ directly on your Proxmox host via the web GUI terminal. AI models can
 **make mistakes**, **hallucinate commands**, or suggest operations that
 may lead to **data loss**, **service disruption**, or **system instability**.
 
+**This project is a work in progress.** It has been tested and verified
+on **PVE 9.2 (Debian 13)** by the author, but **no testing has been
+performed on other environments or Proxmox versions**. It may serve as
+inspiration for your own setup, but **use at your own risk**.
+
 By installing this software you acknowledge that:
 
 - You are **solely responsible** for reviewing and approving every
