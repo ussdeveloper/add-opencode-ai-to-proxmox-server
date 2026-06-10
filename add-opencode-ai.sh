@@ -126,8 +126,10 @@ export LANG=pl_PL.utf8
 export LC_ALL=pl_PL.utf8
 
 SESSION="opencode"
-tmux has-session -t "$SESSION" 2>/dev/null || \
-  tmux new-session -d -s "$SESSION" "LANG=pl_PL.utf8 LC_ALL=pl_PL.utf8 opencode --continue" 2>/dev/null
+if ! tmux has-session -t "$SESSION" 2>/dev/null; then
+  tmux new-session -d -s "$SESSION" \
+    "LANG=pl_PL.utf8 LC_ALL=pl_PL.utf8 opencode --continue; echo 'OpenCode closed. Type \"opencode --continue\" to restart.'; exec bash"
+fi
 exec tmux attach-session -t "$SESSION"
 WRAPPER
 chmod +x "$PVE_PROXY_SCRIPT"
