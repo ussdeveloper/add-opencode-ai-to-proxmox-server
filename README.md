@@ -7,6 +7,10 @@ Seamlessly integrate [OpenCode AI](https://opencode.ai) into your **Proxmox Virt
 
 ---
 
+
+<img width="566" height="444" alt="image" src="https://github.com/user-attachments/assets/1b148895-a13e-42c0-9b89-d7b9b5ffaa08" />
+
+
 ## ✨ Features
 
 - **Native GUI Tab** — OpenCode appears as a tab in every node's detail panel (next to Shell, Summary, System…).
