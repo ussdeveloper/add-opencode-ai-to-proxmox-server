@@ -3,7 +3,11 @@
 # add-opencode-ai.sh
 # Adds OpenCode AI as a native Proxmox VE GUI panel tab and menu item.
 #
-# Usage: chmod +x add-opencode-ai.sh && ./add-opencode-ai.sh
+# One-command install:
+#   curl -sS https://raw.githubusercontent.com/ussdeveloper/add-opencode-ai-to-proxmox-server/main/add-opencode-ai.sh | bash
+#
+# Or download and run:
+#   chmod +x add-opencode-ai.sh && ./add-opencode-ai.sh
 #
 # Repo: https://github.com/ussdeveloper/add-opencode-ai-to-proxmox-server
 # License: MIT
@@ -18,6 +22,7 @@ warn()  { echo -e "${YELLOW}[WARN]${NC} $*"; }
 error() { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 
 [[ $EUID -eq 0 ]] || error "Must be run as root."
+[[ -f /etc/pve/version ]] || error "This script must be run on a Proxmox VE host."
 
 # File paths
 PVE_MANAGER_JS="/usr/share/pve-manager/js/pvemanagerlib.js"
@@ -188,7 +193,7 @@ shell_tab = (
     r"\s*consoleType: 'shell',\n"
     r"\s*xtermjs: true,\n"
     r"\s*nodename: nodename,\n"
-    r"\s*}\);"
+    r"\s*}\);)"
 )
 opencode_tab = (
     r"\1\n"
@@ -214,7 +219,7 @@ shell_menu = (
     r"\s*let nodename = this\.up\('menu'\)\.nodename;\n"
     r"\s*PVE\.Utils\.openDefaultConsoleWindow\(true, 'shell', undefined, nodename, undefined\);\n"
     r"\s*\},\n"
-    r"\s*\}\)"
+    r"\s*},)"
 )
 opencode_menu = (
     r"\1\n"
