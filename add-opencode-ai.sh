@@ -126,12 +126,13 @@ export LANG=pl_PL.utf8
 export LC_ALL=pl_PL.utf8
 export PATH="/usr/local/bin:$PATH"
 
-exec /usr/local/bin/opencode --continue
+exec tmux new-session -A -s opencode \
+  "/usr/local/bin/opencode --continue; echo '--- OpenCode closed, starting bash ---'; exec bash -l"
 WRAPPER
 chmod +x "$PVE_PROXY_SCRIPT"
 
 # ---------- Step 5: Patch Nodes.pm ----------
-info "5/5: Patching Proxmox API (Nodes.pm)..."
+info "5/6: Patching Proxmox API (Nodes.pm)..."
 if grep -q "'opencode'" "$PVE_NODES_PM" 2>/dev/null; then
   info "  Nodes.pm already patched."
 else
