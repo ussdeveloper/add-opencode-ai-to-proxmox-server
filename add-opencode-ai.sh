@@ -122,9 +122,12 @@ JSON
 info "4/6: Creating VNC shell wrapper..."
 cat > "$PVE_PROXY_SCRIPT" << 'WRAPPER'
 #!/bin/bash
+export LANG=pl_PL.utf8
+export LC_ALL=pl_PL.utf8
+
 SESSION="opencode"
 tmux has-session -t "$SESSION" 2>/dev/null || \
-  tmux new-session -d -s "$SESSION" 'opencode --continue' 2>/dev/null
+  tmux new-session -d -s "$SESSION" "LANG=pl_PL.utf8 LC_ALL=pl_PL.utf8 opencode --continue" 2>/dev/null
 exec tmux attach-session -t "$SESSION"
 WRAPPER
 chmod +x "$PVE_PROXY_SCRIPT"
