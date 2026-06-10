@@ -1,4 +1,4 @@
-# 🚀 OpenCode AI — Proxmox VE Integration
+# 🚀 OpenCode AI — Proxmox VE Integration DO NOT USE IT NOW!!!!!
 
 Seamlessly integrate [OpenCode AI](https://opencode.ai) into your **Proxmox Virtual Environment** (PVE) as a native GUI panel tab. Just like Shell, Summary, or Notes — but with an AI coding assistant powered by opencode-ai.
 
