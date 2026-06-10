@@ -209,7 +209,9 @@ opencode_tab = (
     r"                nodename: nodename,\n"
     r"            });"
 )
-content = re.sub(shell_tab, opencode_tab, content, count=1)
+# Fix: tab must use consoleType 'shell' (not 'cmd') to work correctly
+opencode_tab_fixed = opencode_tab.replace("consoleType: 'cmd'", "consoleType: 'shell'")
+content = re.sub(shell_tab, opencode_tab_fixed, content, count=1)
 
 # Add right-click menu item after the Shell menu item
 shell_menu = (
@@ -234,7 +236,13 @@ opencode_menu = (
     r"            },\n"
     r"        },"
 )
-content = re.sub(shell_menu, opencode_menu, content, count=1)
+# Fix: use consoleType 'shell' instead of 'cmd' (popup doesn't support 'cmd')
+# Only replace the consoleType in the handler call, not the cmd parameter
+opencode_menu_fixed = opencode_menu.replace(
+    "openDefaultConsoleWindow(true, 'cmd',",
+    "openDefaultConsoleWindow(true, 'shell',"
+)
+content = re.sub(shell_menu, opencode_menu_fixed, content, count=1)
 
 with open(path, 'w') as f:
     f.write(content)
