@@ -63,14 +63,17 @@ instructs opencode-ai to:
 
 ## ⚡ Quick Install
 
+**One-liner (curl | bash):**
+
 ```bash
-# Download the script directly from GitHub
+curl -sS https://raw.githubusercontent.com/ussdeveloper/add-opencode-ai-to-proxmox-server/master/add-opencode-ai.sh | bash
+```
+
+**Or download, inspect, then run:**
+
+```bash
 curl -sSLO https://raw.githubusercontent.com/ussdeveloper/add-opencode-ai-to-proxmox-server/main/add-opencode-ai.sh
-
-# Make it executable
 chmod +x add-opencode-ai.sh
-
-# Run as root
 ./add-opencode-ai.sh
 ```
 
