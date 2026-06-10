@@ -22,7 +22,7 @@ warn()  { echo -e "${YELLOW}[WARN]${NC} $*"; }
 error() { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 
 [[ $EUID -eq 0 ]] || error "Must be run as root."
-[[ -f /etc/pve/version ]] || error "This script must be run on a Proxmox VE host."
+[[ -f /etc/pve/.version ]] || error "This script must be run on a Proxmox VE host."
 
 # File paths
 PVE_MANAGER_JS="/usr/share/pve-manager/js/pvemanagerlib.js"
