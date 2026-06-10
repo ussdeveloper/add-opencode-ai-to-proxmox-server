@@ -232,7 +232,7 @@ opencode_menu = (
     r"                let nodename = this.up('menu').nodename;\n"
     r"                PVE.Utils.openDefaultConsoleWindow(true, 'cmd', undefined, nodename, undefined, 'opencode');\n"
     r"            },\n"
-    r"        }"
+    r"        },"
 )
 content = re.sub(shell_menu, opencode_menu, content, count=1)
 
