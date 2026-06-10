@@ -126,14 +126,7 @@ export LANG=pl_PL.utf8
 export LC_ALL=pl_PL.utf8
 export PATH="/usr/local/bin:$PATH"
 
-SESSION="opencode"
-OPENCODE_BIN="/usr/local/bin/opencode"
-
-if ! tmux has-session -t "$SESSION" 2>/dev/null; then
-  tmux new-session -d -s "$SESSION" \
-    "LANG=pl_PL.utf8 LC_ALL=pl_PL.utf8 PATH=$PATH $OPENCODE_BIN --continue; echo 'OpenCode closed. Type \"opencode --continue\" to restart.'; exec bash"
-fi
-exec tmux attach-session -t "$SESSION"
+exec /usr/local/bin/opencode --continue
 WRAPPER
 chmod +x "$PVE_PROXY_SCRIPT"
 
